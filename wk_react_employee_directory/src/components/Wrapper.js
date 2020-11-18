@@ -1,5 +1,5 @@
 import React from 'react';
-import "../style/Wrapper.css";
+//import "../style/Wrapper.css";
 
 function Wrapper (){
     return (
