@@ -1,25 +1,68 @@
-import React from 'react';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Wrapper from './components/Wrapper';
-import Header from './components/Header';
-import Main from './components/Main';
-import { Button } from 'react-bootstrap';
+import React, { Component } from "react";
+//import Wrapper from "./components/Wrapper";
+import TableHeader from "./components/TableHeader";
+//import TableSort from "./components/TableSort";
+import TableBody from "./components/TableBody";
+//import { Button } from "react-bootstrap";
 
-function App() {
-    return (
-      <div className="container mt-5">
-        <h1>This is my React Employee Directory!</h1>
-        <Wrapper>
-            <Header></Header>
-              <Main>
-              <Button>Something else</Button>
-              </Main>   
-        </Wrapper>
-      </div>
-    )
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+class App extends Component {
+  state = {
+    users: [
+      {
+        id: 1,
+        name: "Bob",
+        email: "bob@gmail.com",
+        city: "Seattle",
+        us: true
+      },
+      {
+        id: 2,
+        name: "Kristen",
+        email: "kristen@gmail.com",
+        city: "New York",
+        us: true
+      },
+      {
+        id: 3,
+        name: "Hans",
+        email: "hans@gmail.com",
+        city: "Berlin",
+        us: false
+      },
+      {
+        id: 4,
+        name: "Sofia",
+        email: "sofia@gmail.com",
+        city: "Barcelona",
+        us: false
+      },
+    ],
+  };
+
+  sortHandler = (props) => {
+    const { users } = props;
+    console.log(users);
+    
   }
 
-export default App;
+  filterHandler = () => {
 
-//describe dom
-//data table component: body, header, rows 
+  }
+
+  render() {
+    return (
+      <div className="center">
+        <h1>Employee Directory powered by React!</h1>
+        <button onClick={this.sortHandler}>Sort employees alphabetically</button>
+        <button onClick={this.filterHandler}>Only show U.S. employees</button>
+        <TableHeader></TableHeader>
+        <TableBody users={this.state.users} ></TableBody>
+      </div>
+    );
+  }
+}
+
+export default App;

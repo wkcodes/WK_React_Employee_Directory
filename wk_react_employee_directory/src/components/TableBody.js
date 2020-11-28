@@ -1,25 +1,26 @@
-import React from 'react';
-// import styles 
+import React, { Component } from "react";
 
-function TableBody ({ users }) {
-    return (
+class TableBody extends Component {
+  render() {
+    <caption>Employees</caption>
+    return this.props.users.map((user) => (
+      <table key={user.id} >
         <tbody>
-            {/*map users*/}
-            return (
-                <tr key={ users.id }>
-                    <td id="firstName" className="align-middle">
-                        { user.firstName }
-                    </td>
-                    <td id="lastName" className="align-middle">
-                        { user.lastName }
-                    </td>
-                    <td id="email" className="align-middle">
-                        { user.email }
-                    </td>
-                </tr>
-            )
+          <tr>
+            <td id="name" className="align-middle">
+              {user.name}
+            </td>
+            <td id="email" className="align-middle">
+              {user.email}
+            </td>
+            <td id="city" className="align-middle">
+              {user.city}
+            </td>
+          </tr>
         </tbody>
-    )
+      </table>
+    ));
+  }
 }
 
 export default TableBody;
