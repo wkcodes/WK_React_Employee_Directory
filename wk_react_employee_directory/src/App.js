@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-//import Wrapper from "./components/Wrapper";
 import TableHeader from "./components/TableHeader";
-//import TableSort from "./components/TableSort";
+//import SortedTable from "./components/SortedTable";
 import TableBody from "./components/TableBody";
-//import { Button } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -39,13 +37,46 @@ class App extends Component {
         city: "Barcelona",
         us: false
       },
+      {
+        id: 5,
+        name: "Zach",
+        email: "zach@gmail.com",
+        city: "Portland",
+        us: true
+      },
+      {
+        id: 6,
+        name: "Amelia",
+        email: "amelia@gmail.com",
+        city: "London",
+        us: false
+      },
+      {
+        id: 7,
+        name: "Mikhail",
+        email: "mikhail@gmail.com",
+        city: "Moscow",
+        us: false
+      },
     ],
+    sorted: false,
+    filtered: false
   };
 
-  sortHandler = (props) => {
-    const { users } = props;
-    console.log(users);
-    
+  sortHandler = () => {
+    //sets sorted attribute of state
+    this.setState({ sorted: true });
+    //sorts user array by first letter of name
+    this.state.users.sort(function(a,b) {
+      let nameA = a.name;
+      let nameB = b.name;
+      if(nameA > nameB){
+        return -a;
+      }if(nameA < nameB) {
+        return -1;
+      }
+      return 0;
+    });
   }
 
   filterHandler = () => {

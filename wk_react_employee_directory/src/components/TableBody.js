@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 class TableBody extends Component {
+
   render() {
-    <caption>Employees</caption>
     return this.props.users.map((user) => (
-      <table key={user.id} >
+      <table key={user.id} className="table table-bordered">
         <tbody>
           <tr>
             <td id="name" className="align-middle">
@@ -22,5 +22,5 @@ class TableBody extends Component {
     ));
   }
 }
-
+ 
 export default TableBody;
