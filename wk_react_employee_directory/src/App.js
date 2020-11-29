@@ -89,12 +89,25 @@ class App extends Component {
     //sets filtered attribute to true
     this.setState({ filtered: true });
     //filters out non-us users
+    this.tableFilter()
     finalTable = <SortedTable></SortedTable>;
   };
 
+  tableFilter = (users) => {
+    let allUsers = this.state.users;
+    let usUsers = [];
+    for(let i =0; i < allUsers.length; i++){
+      if(allUsers[i].us){
+        usUsers.push(allUsers[i])
+      } 
+    }
+    return usUsers;
+  }
+
   render() {
     if(this.state.filtered){
-      finalTable = <SortedTable></SortedTable>;
+      let tempUsers = this.tableFilter(this.state.users);
+      finalTable = <SortedTable users={tempUsers}></SortedTable>;
     }else{
     finalTable = <TableBody users={this.state.users}></TableBody>;
     }
